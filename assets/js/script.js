@@ -1,3 +1,4 @@
+var saveBtn = $(".saveBtn");
 
 // Setting current date, time and year to the header
 
@@ -6,17 +7,23 @@ $("#currentDay").append(CurrentTime);
 
 //save tasks in local storage so they stay when page is reloaded
 
+//saveBtn.on("click", function () {
+
+   // var time = $(this).siblings(".hour").val();
+   // var tasks = $(this).siblings(".tasks").text();
+
+   // localStorage.setItem(time,tasks);
+   // tasks.value=localStorage.getItem(time,tasks);
+//});
 
 
 let tasks = document.querySelector(".tasks");
 
 tasks.value= localStorage.getItem("tasks");
 
-tasks.addEventListener("keyup", event => {
-   localStorage.setItem("tasks", tasks.value);
+tasksEl.addEventListener("keyup", event => {
+  localStorage.setItem("tasks", tasks.value);
 });
-
-
 
 
 //sets color blocks for past, present, and future
