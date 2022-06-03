@@ -1,13 +1,14 @@
-let tasks = document.querySelector(".tasks");
 
 // Setting current date, time and year to the header
 
 var CurrentTime = moment().format('dddd, MMMM Do YYYY, h:mm:ss a');
 $("#currentDay").append(CurrentTime);
-console.log(CurrentTime);
-
 
 //save tasks in local storage so they stay when page is reloaded
+
+
+
+let tasks = document.querySelector(".tasks");
 
 tasks.value= localStorage.getItem("tasks");
 
@@ -16,24 +17,27 @@ tasks.addEventListener("keyup", event => {
 });
 
 
+
+
+//sets color blocks for past, present, and future
+
 function timeTracker() {
     
-   var time = moment().hour()
+   var time = moment().hour();
+
+   $(".time-block").each(function() {
+    var plannerHour = parseInt($(this).attr("id"));
 
     //new classes depending on the time it is
-
-    if (moment().isAfter(time)) {
-        $(tasks).addClass("future");
-      } 
-      else if (moment().isSame(time)) {
-        $(tasks).addClass("present");
-      } 
-      else if (moment().isBefore(time))  {
-        $(tasks).addClass("past");
-      }
+    if (plannerHour > time) {
+        $(this).addClass("future");
+    } else if (plannerHour === time) {
+        $(this).addClass("present");
+    } else {
+        $(this).addClass("past");
+    }
+    });
 
   };
 
   timeTracker();
-
-  
