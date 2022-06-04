@@ -7,22 +7,14 @@ $("#currentDay").append(CurrentTime);
 
 //save tasks in local storage so they stay when page is reloaded
 
-//saveBtn.on("click", function () {
+saveBtn.on("click", function () {
 
-   // var time = $(this).siblings(".hour").val();
-   // var tasks = $(this).siblings(".tasks").text();
+   var time = $(this).siblings(".hour").text();
+   var tasks = $(this).siblings(".tasks").val();
 
-   // localStorage.setItem(time,tasks);
-   // tasks.value=localStorage.getItem(time,tasks);
-//});
-
-
-let tasks = document.querySelector(".tasks");
-
-tasks.value= localStorage.getItem("tasks");
-
-tasksEl.addEventListener("keyup", event => {
-  localStorage.setItem("tasks", tasks.value);
+    localStorage.setItem(time,tasks);
+    console.log("save")
+    tasks.value=localStorage.getItem(time,tasks);
 });
 
 
@@ -47,4 +39,7 @@ function timeTracker() {
 
   };
 
+
   timeTracker();
+
+  
